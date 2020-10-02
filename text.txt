@@ -1,0 +1,42 @@
+Techno 
+Computers 
+
+1133 South Cavalier Drive 
+Alamo, Tennessee, 
+United Sates of America 
++17319696651 
+TIN: 14123456789 
+Pin Code 343567 
+ 
+Bill to: 
+M/s:   
+Monica Geller, 
+Friends Building Room No.205 
+Bellmont, Illinois,  INVOICE 
+Pin Code 5646, 
+United State of America 
+TIN: 1412349008 
+Contact +3435677532 
+
+  Invoice # 87654 
+Invoice Date: May 09, 2020 
+Due Date: May 15, 2020 
+
+ 
+
+ID  DESCRIPTION  QTY  PRICE  TOTAL 
+
+01  Logitech B170 Wireless Mouse (Black)  2  600.00  1200.00 
+
+02  Techair Hard case - Flip cover for tablet - PET - Black  1  2000.00  2000.00 
+
+03  HP Docking Station  1  800.00  800.00 
+
+04  Speakers - Logitech  1  300.00  300.00 
+
+      Sub Total  4300.00 
+
+      GST 8%  344.00 
+      Total  4644.00 
+
+ 
