@@ -120,7 +120,7 @@
                 <OutArgument x:TypeArguments="ui:GenericValue">[ExcelSheetName]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="ui:GenericValue">[customerName+"_"+InvoiceNo+".xlsx"]</InArgument>
+                <InArgument x:TypeArguments="ui:GenericValue">[customerName+"_"+InvoiceNo]</InArgument>
               </Assign.Value>
             </Assign>
             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ExtractData workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ExtractData.xaml">

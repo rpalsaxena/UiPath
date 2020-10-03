@@ -67,7 +67,7 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap:VirtualizedContainerService.HintSize="564,2108" sap2010:WorkflowViewState.IdRef="Sequence_11">
+  <Sequence sap:VirtualizedContainerService.HintSize="564,2235" sap2010:WorkflowViewState.IdRef="Sequence_11">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="pageCount" />
       <Variable x:TypeArguments="x:String" Name="TableSelector" />
@@ -104,7 +104,7 @@
     <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Invoice No.&quot;, InvoiceNo}]" DataTable="[Items]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="522,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
     <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Invoice Date&quot;, InvDate}]" DataTable="[Items]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="522,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
     <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Order Information&quot;, &quot;&quot;}]" DataTable="[Items]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="522,22" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
-    <ui:AppendRange DataTable="[Items]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="522,115" sap2010:WorkflowViewState.IdRef="AppendRange_2" SheetName="Sheet1" WorkbookPath="[In_ExcelSheetName]" />
+    <ui:AppendRange DataTable="[Items]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="522,115" sap2010:WorkflowViewState.IdRef="AppendRange_2" SheetName="Sheet1" WorkbookPath="[In_ExcelSheetName+&quot;.xlsx&quot;]" />
     <Assign sap:VirtualizedContainerService.HintSize="522,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[rowSelector]</OutArgument>
@@ -155,7 +155,7 @@
                     </ui:Target>
                   </ui:ExtractData.Target>
                 </ui:ExtractData>
-                <ui:AppendRange DataTable="[ExtractDataTable]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="Sheet1" WorkbookPath="[In_ExcelSheetName]" />
+                <ui:AppendRange DataTable="[ExtractDataTable]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="Sheet1" WorkbookPath="[In_ExcelSheetName+&quot;.xlsx&quot;]" />
               </Sequence>
             </ActivityAction>
           </ui:WindowScope.Body>
@@ -173,6 +173,11 @@
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke OrchestratorBot workflow" sap:VirtualizedContainerService.HintSize="522,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="OrchestratorBot.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="IntextPdf">[textPdf]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SendEmail workflow" sap:VirtualizedContainerService.HintSize="522,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="SendEmail.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="In_ExcelFileName">[In_ExcelSheetName]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
