@@ -82,8 +82,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <upap:GetPDFPageCount DisplayName="Get PDF Page Count" FileName="./data/JoeyTribbiani_01102020_281092.pdf" sap:VirtualizedContainerService.HintSize="522,59" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_1" PageCount="[pageCount]" />
-    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="./data/JoeyTribbiani_01102020_281092.pdf" sap:VirtualizedContainerService.HintSize="522,59" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[textPdf]" />
+    <upap:GetPDFPageCount DisplayName="Get PDF Page Count" FileName="[In_fileName]" sap:VirtualizedContainerService.HintSize="522,59" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_1" PageCount="[pageCount]" />
+    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[In_fileName]" sap:VirtualizedContainerService.HintSize="522,59" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[textPdf]" />
     <ui:BuildDataTable DataTable="[Items]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="522,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Column1&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Column2&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;  &lt;TableName&gt;&#xD;&#xA;    &lt;Column1&gt;Techno Computers&lt;/Column1&gt;&#xD;&#xA;  &lt;/TableName&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
     <Assign sap:VirtualizedContainerService.HintSize="522,60" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
@@ -104,7 +104,7 @@
     <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Invoice No.&quot;, InvoiceNo}]" DataTable="[Items]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="522,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
     <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Invoice Date&quot;, InvDate}]" DataTable="[Items]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="522,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
     <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Order Information&quot;, &quot;&quot;}]" DataTable="[Items]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="522,22" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
-    <ui:AppendRange DataTable="[Items]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="522,115" sap2010:WorkflowViewState.IdRef="AppendRange_2" SheetName="Sheet1" WorkbookPath="in.xlsx" />
+    <ui:AppendRange DataTable="[Items]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="522,115" sap2010:WorkflowViewState.IdRef="AppendRange_2" SheetName="Sheet1" WorkbookPath="[In_ExcelSheetName]" />
     <Assign sap:VirtualizedContainerService.HintSize="522,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[rowSelector]</OutArgument>
@@ -128,7 +128,7 @@
             <OutArgument x:TypeArguments="x:String">[TableSelector]</OutArgument>
           </Assign.To>
           <Assign.Value>
-            <InArgument x:TypeArguments="x:String">["&lt;wnd app='acrord32.exe' cls='AcrobatSDIWindow' title='*.pdf - Adobe Acrobat Reader DC' /&gt; &lt;wnd aaname='Document Pane' cls='AVL_AVView' title='AVScrolledPageView' /&gt; &lt;wnd cls='AVL_AVView' title='AVPageView' /&gt; &lt;ctrl idx='"+ rowSelector.ToString +"' role='table' /&gt;"]</InArgument>
+            <InArgument x:TypeArguments="x:String">["&lt;wnd aaname='Document Pane' cls='AVL_AVView' title='AVScrolledPageView' /&gt; &lt;wnd cls='AVL_AVView' title='AVPageView' /&gt; &lt;ctrl idx='"+ rowSelector.ToString +"' role='table' /&gt;"]</InArgument>
           </Assign.Value>
         </Assign>
         <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'RachelGre Acrobatsd'" sap:VirtualizedContainerService.HintSize="434,499" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="daed4f72b4115dc91305bdb9af16fcdd" Selector="&lt;wnd app='acrord32.exe' cls='AcrobatSDIWindow' title='*.pdf - Adobe Acrobat Reader DC' /&gt;">
@@ -155,7 +155,7 @@
                     </ui:Target>
                   </ui:ExtractData.Target>
                 </ui:ExtractData>
-                <ui:AppendRange DataTable="[ExtractDataTable]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="Sheet1" WorkbookPath="in.xlsx" />
+                <ui:AppendRange DataTable="[ExtractDataTable]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="Sheet1" WorkbookPath="[In_ExcelSheetName]" />
               </Sequence>
             </ActivityAction>
           </ui:WindowScope.Body>

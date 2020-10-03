@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ReadEmails" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="847,1311" sap2010:WorkflowViewState.IdRef="ReadEmails_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ReadEmails" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="847,1410" sap2010:WorkflowViewState.IdRef="ReadEmails_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="22">
+    <scg:List x:TypeArguments="x:String" Capacity="23">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -23,10 +23,11 @@
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
       <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Security.Cryptography</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="16">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="17">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -43,9 +44,10 @@
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Security</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ReadEmails" sap:VirtualizedContainerService.HintSize="827,1352" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ReadEmails" sap:VirtualizedContainerService.HintSize="827,1350" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="fileName" />
       <Variable x:TypeArguments="x:String" Name="checkFile" />
@@ -58,20 +60,20 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:GetPassword DisplayName="Get Password" sap:VirtualizedContainerService.HintSize="785,22" sap2010:WorkflowViewState.IdRef="GetPassword_1" ProtectedPassword="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAxQDYq+tGH0qat6SBnj3ClgAAAAACAAAAAAAQZgAAAAEAACAAAADC7HtprQWBJvos2B7fB05DP7DDaf6Vr3hmc+oWw61Z5AAAAAAOgAAAAAIAACAAAAAHrRngbvRM0gYO05Pjb1JGcOEeFUdlpokCJyyh8GyLWxAAAACShcP1zocKcT1aq6LO8SpIQAAAADGKIEpThGRpgfPRnXnnO1fkMzdOVIlcpGzA6pvEXd6IJs4oISpQuLxoMtehKuonLpo+WpkunQBqTk0Rf2oVojM=" Result="[passkey]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="785,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[passkey]" />
     <ui:GetIMAPMailMessages TimeoutMS="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages" Email="rpalsaxena@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="785,22" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" MailFolder="Inbox" MarkAsRead="False" Messages="[emails]" OnlyUnreadMessages="True" Password="[passkey]" Port="993" SecureConnection="Auto" Server="imap.gmail.com" Top="30" />
-    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="785,1136" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[emails]">
+    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="785,1035" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[emails]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="snm:MailMessage">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="email" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="749,1002" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="749,901" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="707,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[email.Subject.ToString]" />
             <If Condition="[email.Subject.ToString.Contains(&quot;Techno Computers&quot;)]" sap:VirtualizedContainerService.HintSize="707,809" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <ui:ForEach x:TypeArguments="snm:Attachment" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="562,661" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[email.Attachments]">
